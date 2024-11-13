@@ -1,9 +1,187 @@
 <!DOCTYPE html>
-<html>
-  <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
-    
-  </body>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('HD BACK.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        section {
+            padding: 100px 40px 40px;
+            margin-top: 80px;
+            background-color: rgba(0, 0, 0, 0.8);
+            margin: 20px auto;
+            border-radius: 15px;
+            width: 60%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        section:hover {
+            transform: scale(1.02);
+        }
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        p, ul {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        ul li:hover {
+            color: lightblue;
+        }
+        .project-details {
+            display: none;
+            margin-left: 20px;
+            font-size: 1rem;
+            color: #ccc;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: lightblue;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Portfolio</h1>
+        <nav>
+            <a href="#" onclick="showSection('projects')">My Projects</a>
+            <a href="#" onclick="showSection('about')">About Me</a>
+            <a href="#" onclick="showSection('contact')">Contact Information</a>
+        </nav>
+    </header>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <p>Here are some of the projects I have worked on. Click on a project to see more details:</p>
+        <ul>
+            <li class="project-item" onclick="toggleDetails('project1')">Project 1: Website Design
+                <div id="project1" class="project-details">
+                    <p>Description: A responsive website designed for a local business.</p>
+                    <p>Technologies: HTML, CSS, JavaScript</p>
+                </div>
+            </li>
+            <li class="project-item" onclick="toggleDetails('project2')">Project 2: Mobile App Development
+                <div id="project2" class="project-details">
+                    <p>Description: A cross-platform mobile application for task management.</p>
+                    <p>Technologies: Flutter, Dart</p>
+                </div>
+            </li>
+            <li class="project-item" onclick="toggleDetails('project3')">Project 3: Machine Learning Model
+                <div id="project3" class="project-details">
+                    <p>Description: A predictive model for customer behavior analysis.</p>
+                    <p>Technologies: Python, TensorFlow</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I am a passionate developer with a love for creating innovative solutions. I specialize in frontend and backend development, and I enjoy learning new technologies.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Information</h2>
+        <p>Email: rowie2414@gmail.com</p>
+        <p>Phone: (+63) 9696180408</p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Rowie's Portfolio | Built with ❤️ | <a href="#">Back to top</a></p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('projects').style.display = 'none';
+            document.getElementById('about').style.display = 'none';
+            document.getElementById('contact').style.display = 'none';
+
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function toggleDetails(projectId) {
+            const details = document.getElementById(projectId);
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+            } else {
+                details.style.display = 'block';
+            }
+        }
+
+        // Show the "About Me" section by default
+        showSection('about');
+    </script>
+</body>
 </html>
