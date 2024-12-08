@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
+    <title>CS 1130 ITC</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
@@ -50,47 +50,46 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
         section {
-            padding: 100px 40px 40px;
-            margin-top: 80px;
+            display: none;
+            padding: 40px;
             background-color: rgba(0, 0, 0, 0.8);
-            margin: 20px auto;
+            margin: 80px auto;
             border-radius: 15px;
-            width: 60%;
+            width: 80%;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s;
-            text-align: center;
-        }
-        section:hover {
-            transform: scale(1.02);
+            color: white;
         }
         h2 {
             font-size: 2rem;
             border-bottom: 2px solid white;
             padding-bottom: 10px;
             margin-bottom: 20px;
+            text-align: center;
         }
-        p, ul {
-            font-size: 1.2rem;
-            line-height: 1.6;
+        label, input, select, button {
+            display: block;
+            margin: 10px auto;
+            width: 90%;
+            max-width: 400px;
+            color: black;
         }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            margin: 10px 0;
-            font-size: 1.1rem;
+        button {
+            background-color: lightblue;
+            color: black;
+            font-weight: bold;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-            transition: color 0.3s;
+            transition: background-color 0.3s;
         }
-        ul li:hover {
-            color: lightblue;
+        button:hover {
+            background-color: darkblue;
+            color: white;
         }
-        .project-details {
-            display: none;
-            margin-left: 20px;
-            font-size: 1rem;
-            color: #ccc;
+        #employeePayroll label {
+            color: white; 
+            font-weight: bold; 
         }
         footer {
             text-align: center;
@@ -109,79 +108,278 @@
         footer a:hover {
             text-decoration: underline;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            text-align: center;
+            padding: 5px;
+        }
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Portfolio</h1>
         <nav>
-            <a href="#" onclick="showSection('projects')">My Projects</a>
-            <a href="#" onclick="showSection('about')">About Me</a>
-            <a href="#" onclick="showSection('contact')">Contact Information</a>
+            <a href="#" onclick="showSection('projects')">Projects</a>
+            <a href="#" onclick="showSection('contact')">Contact</a>
         </nav>
     </header>
 
     <section id="projects">
         <h2>My Projects</h2>
-        <p>Here are some of the projects I have worked on. Click on a project to see more details:</p>
         <ul>
-            <li class="project-item" onclick="toggleDetails('project1')">Project 1: Website Design
-                <div id="project1" class="project-details">
-                    <p>Description: A responsive website designed for a local business.</p>
-                    <p>Technologies: HTML, CSS, JavaScript</p>
-                </div>
-            </li>
-            <li class="project-item" onclick="toggleDetails('project2')">Project 2: Mobile App Development
-                <div id="project2" class="project-details">
-                    <p>Description: A cross-platform mobile application for task management.</p>
-                    <p>Technologies: Flutter, Dart</p>
-                </div>
-            </li>
-            <li class="project-item" onclick="toggleDetails('project3')">Project 3: Machine Learning Model
-                <div id="project3" class="project-details">
-                    <p>Description: A predictive model for customer behavior analysis.</p>
-                    <p>Technologies: Python, TensorFlow</p>
-                </div>
-            </li>
+            <li><a href="#" onclick="showSubSection('conversion')">Conversion Calculator</a></li>
+            <li><a href="#" onclick="showSubSection('incomeTax')">Income Tax Calculator</a></li>
+            <li><a href="#" onclick="showSubSection('nthCalc')">Nth Factorial, Sum, Average Calculator</a></li>
+            <li><a href="#" onclick="showSubSection('employeePayroll')">Employee Payroll System</a></li>
         </ul>
-    </section>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I am a passionate developer with a love for creating innovative solutions. I specialize in frontend and backend development, and I enjoy learning new technologies.</p>
+        <section id="conversion" class="sub-section">
+            <h2>Conversion Calculator</h2>
+            <label for="conversionValue">Enter Value:</label>
+            <input type="number" id="conversionValue">
+            <label for="conversionType">Select Conversion:</label>
+            <select id="conversionType">
+                <option value="celsiusToFahrenheit">Celsius To Fahrenheit</option>
+                <option value="fahrenheitToCelsius">Fahrenheit To Celsius</option>
+                <option value="metersToFeet">Meters to Feet</option>
+                <option value="feetToMeters">Feet to Meters</option>
+            </select>
+            <button onclick="convertValue()">Convert</button>
+            <h2>Result: <span id="conversionResult">0</span></h2>
+        </section>
+
+        <section id="incomeTax" class="sub-section">
+    <h2>Income Tax Calculator</h2>
+    <label for="incomeValue">Enter Income:</label>
+    <input type="number" id="incomeValue" placeholder="Enter Income">
+    <button onclick="calculateIncomeTax()">Calculate</button>
+    <h2>Income Tax: <span id="incomeTaxResult">P0</span></h2>
+</section>
+
+        <section id="nthCalc" class="sub-section">
+            <h2>Nth Factorial, Sum, Average Calculator</h2>
+            <label for="nthValue">Enter Integer:</label>
+            <input type="number" id="nthValue">
+            <button onclick="calculateNth()">Calculate</button>
+            <h2>Nth Factorial: <span id="nthFactorialResult"></span></h2>
+            <h2>Sum: <span id="nthSumResult"></span></h2>
+            <h2>Average: <span id="nthAverageResult"></span></h2>
+        </section>
+
+        <section id="employeePayroll" class="sub-section">
+            <h2>Employee Payroll System</h2>
+            <div id="maindiv">
+                <div id="inputdiv">
+                    <h3>Employee Details</h3>
+                    <label for="inputName">Name:</label>
+                    <input type="text" id="inputName" placeholder="Employee Name">
+                    <label for="daysworked">Days Worked:</label>
+                    <input type="number" id="daysworked" placeholder="Days Worked">
+                    <label for="dailyrate">Daily Rate:</label>
+                    <input type="number" id="dailyrate" placeholder="Daily Rate">
+                    <label for="deductionamount">Deductions:</label>
+                    <input type="number" id="deductionamount" placeholder="Deduction Amount">
+                </div>
+                <div id="buttonsdiv">
+                    <button id="addEmployee">Add Employee</button>
+                    <button id="clearEmployee">Clear All</button>
+                </div>
+                <div id="cartdiv">
+                    <h3>Employee List</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Name</th>
+                                <th>Days Worked</th>
+                                <th>Daily Rate</th>
+                                <th>Gross Pay</th>
+                                <th>Deductions</th>
+                                <th>Net Pay</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablebody"></tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4">Total</td>
+                                <td id="totalgrosspay"></td>
+                                <td></td>
+                                <td id="totalnetpay"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <br>
+                    <label for="delitem">Delete Employee No:</label>
+                    <input type="number" id="delitem">
+                    <button id="deleteEmployee">Delete</button>
+                </div>
+            </div>
+        </section>
     </section>
 
     <section id="contact">
         <h2>Contact Information</h2>
         <p>Email: rowie2414@gmail.com</p>
         <p>Phone: (+63) 9696180408</p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
     </section>
 
     <footer>
-        <p>&copy; 2024 Rowie's Portfolio | Built with ❤️ | <a href="#">Back to top</a></p>
+        <p>&copy; 2024 Portfolio </a></p>
     </footer>
 
     <script>
         function showSection(sectionId) {
-            document.getElementById('projects').style.display = 'none';
-            document.getElementById('about').style.display = 'none';
-            document.getElementById('contact').style.display = 'none';
-
+            document.querySelectorAll('section').forEach(section => section.style.display = 'none');
             document.getElementById(sectionId).style.display = 'block';
         }
 
-        function toggleDetails(projectId) {
-            const details = document.getElementById(projectId);
-            if (details.style.display === 'block') {
-                details.style.display = 'none';
-            } else {
-                details.style.display = 'block';
-            }
+        function showSubSection(subSectionId) {
+            document.querySelectorAll('.sub-section').forEach(sub => sub.style.display = 'none');
+            document.getElementById(subSectionId).style.display = 'block';
         }
 
-        // Show the "About Me" section by default
-        showSection('about');
+        function convertValue() {
+            const value = parseFloat(document.getElementById('conversionValue').value);
+            const type = document.getElementById('conversionType').value;
+            let result;
+            switch (type) {
+                case 'celsiusToFahrenheit':
+                    result = (value * 9 / 5) + 32;
+                    break;
+                case 'fahrenheitToCelsius':
+                    result = (value - 32) * 5 / 9;
+                    break;
+                case 'metersToFeet':
+                    result = value * 3.28084;
+                    break;
+                case 'feetToMeters':
+                    result = value / 3.28084;
+                    break;
+            }
+            document.getElementById('conversionResult').textContent = result.toFixed(2);
+        }
+
+        function calculateIncomeTax() {
+    const income = parseFloat(document.getElementById('incomeValue').value);
+    let tax = 0;
+
+    if (income <= 250000) tax = 0;
+    else if (income <= 400000) tax = (income - 250000) * 0.2;
+    else if (income <= 800000) tax = (income - 400000) * 0.25 + 30000;
+    else if (income <= 2000000) tax = (income - 800000) * 0.3 + 130000;
+    else if (income <= 8000000) tax = (income - 2000000) * 0.32 + 490000;
+    else tax = (income - 8000000) * 0.35 + 2410000;
+
+    document.getElementById('incomeTaxResult').textContent = `P${tax.toFixed(2)}`;
+}
+
+        function calculateNth() {
+            const n = parseInt(document.getElementById('nthValue').value);
+            if (n <= 0) {
+                alert("Please enter a positive integer.");
+                return;
+            }
+            let factorial = 1, sum = 0;
+            for (let i = 1; i <= n; i++) {
+                factorial *= i;
+                sum += i;
+            }
+            const average = sum / n;
+            document.getElementById('nthFactorialResult').textContent = factorial;
+            document.getElementById('nthSumResult').textContent = sum;
+            document.getElementById('nthAverageResult').textContent = average.toFixed(2);
+        }
+
+        let employees = [];
+
+        function ConvertDecimal(value, decimals) {
+            return isNaN(value) ? '' : value.toFixed(decimals);
+        }
+
+        function computeGrossPay(daysWorked, dailyRate) {
+            return ConvertDecimal(daysWorked * dailyRate, 2);
+        }
+
+        function computeNetPay(grossPay, deductions) {
+            return ConvertDecimal(grossPay - deductions, 2);
+        }
+
+        function updateTable() {
+            const tbody = document.getElementById("tablebody");
+            tbody.innerHTML = '';
+            let totalGross = 0;
+            let totalNet = 0;
+
+            employees.forEach((employee, index) => {
+                totalGross += parseFloat(employee.grossPay);
+                totalNet += parseFloat(employee.netPay);
+
+                const row = `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${employee.name}</td>
+                        <td>${employee.daysWorked}</td>
+                        <td>${employee.dailyRate}</td>
+                        <td>${employee.grossPay}</td>
+                        <td>${employee.deductions}</td>
+                        <td>${employee.netPay}</td>
+                    </tr>`;
+                tbody.innerHTML += row;
+            });
+
+            document.getElementById("totalgrosspay").innerText = ConvertDecimal(totalGross, 2);
+            document.getElementById("totalnetpay").innerText = ConvertDecimal(totalNet, 2);
+        }
+
+        document.getElementById("addEmployee").addEventListener("click", () => {
+            const name = document.getElementById("inputName").value.trim();
+            const daysWorked = parseFloat(document.getElementById("daysworked").value);
+            const dailyRate = parseFloat(document.getElementById("dailyrate").value);
+            const deductions = parseFloat(document.getElementById("deductionamount").value);
+
+            if (!name || isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductions)) {
+                alert("Please fill in all fields with valid values.");
+                return;
+            }
+
+            const grossPay = computeGrossPay(daysWorked, dailyRate);
+            const netPay = computeNetPay(grossPay, deductions);
+
+            employees.push({ name, daysWorked, dailyRate, deductions, grossPay, netPay });
+            updateTable();
+        });
+
+        document.getElementById("deleteEmployee").addEventListener("click", () => {
+            const index = parseInt(document.getElementById("delitem").value, 10) - 1;
+
+            if (isNaN(index) || index < 0 || index >= employees.length) {
+                alert("Invalid employee number.");
+                return;
+            }
+
+            employees.splice(index, 1);
+            updateTable();
+        });
+
+        document.getElementById("clearEmployee").addEventListener("click", () => {
+            if (confirm("Are you sure you want to clear all employees?")) {
+                employees = [];
+                updateTable();
+            }
+        });
+
+
     </script>
 </body>
 </html>
