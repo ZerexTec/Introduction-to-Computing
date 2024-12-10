@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Tax Payroll</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="program-section">
+        <video autoplay muted loop class="background-video">
+            <source src="Red_Blue.mp4" type="video/mp4">
+        </video>
+        <button class="return-button" onclick="window.location.href='Programs.html'">Back to Programs</button>
+        <div class="overlay">
+            <h2>Income Tax Payroll</h2>
+            <form class="form-container">
+                <input type="number" id="incomeInput" class="input-box" placeholder="Enter annual income" required>
+                <button type="button" class="submit-button" onclick="calculateTax()">Compute Tax</button>
+            </form>
+            <p id="taxResult" class="result-box"></p>            
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+<link rel="stylesheet" href="styles.css">
+</body>
+</html>

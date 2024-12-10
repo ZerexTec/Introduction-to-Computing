@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Payroll</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="program-section">
+        <video autoplay muted loop class="background-video">
+            <source src="Red_Blue.mp4" type="video/mp4">
+        </video>
+        <button class="return-button" onclick="window.location.href='Programs.html'">Back to Programs</button>
+        <div class="overlay">
+            <h2>Employee Payroll</h2>
+            <form class="form-container">
+                <input type="text" id="inputName" class="input-box" placeholder="Employee Name">
+                <input type="number" id="daysworked" class="input-box" placeholder="Days Worked">
+                <input type="number" id="dailyrate" class="input-box" placeholder="Daily Rate">
+                <input type="number" id="deductionamount" class="input-box" placeholder="Deductions">
+                <button type="button" id="addEmployee" class="submit-button">Add Employee</button>
+                <input type="number" id="delitem" class="input-box" placeholder="Employee Number to Delete">
+                <button type="button" id="deleteEmployee" class="submit-button">Delete Employee</button>
+                <button type="button" id="clearEmployee" class="submit-button">Clear All</button>
+            </form>
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Days Worked</th>
+                        <th>Daily Rate</th>
+                        <th>Gross Pay</th>
+                        <th>Deductions</th>
+                        <th>Net Pay</th>
+                    </tr>
+                </thead>
+                <tbody id="tablebody"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
